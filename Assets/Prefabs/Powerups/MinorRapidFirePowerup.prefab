@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rapidFireRate: 0.1
   cooldownTime: 10
-  moveSpeed: 0.01
+  moveSpeed: 0.02
 --- !u!58 &4240446522788769711
 CircleCollider2D:
   m_ObjectHideFlags: 0
