@@ -63,8 +63,11 @@ public class Leaderboard : MonoBehaviour
                     tempPlayerNames += "\n";
                 }
                 done = true;
-                playerNames.text = tempPlayerNames;
-                playerScores.text = tempPlayerScores;
+                if (playerNames != null && playerScores != null)
+                {
+                    playerNames.text = tempPlayerNames;
+                    playerScores.text = tempPlayerScores;
+                }
             }
             else
             {
