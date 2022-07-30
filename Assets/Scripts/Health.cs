@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
     LevelManager levelManager;
+    Leaderboard leaderboard;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
         audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         levelManager = FindObjectOfType<LevelManager>();
+        leaderboard = FindObjectOfType<Leaderboard>();
     }
 
     void Start()
@@ -67,6 +69,7 @@ public class Health : MonoBehaviour
         }
     else
         {
+            leaderboard.SubmitScoreRoutine(scoreKeeper.GetScore());
             levelManager.LoadGameOver();
         }
             Destroy(gameObject);
