@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LASER DEFENDER
+  m_text: LASER ASSAULT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b0ea30264d21554cb5296284ce03cfe, type: 2}
   m_sharedMaterial: {fileID: 5260771984406606351, guid: 3b0ea30264d21554cb5296284ce03cfe, type: 2}
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PROTECT THE EARTH
+  m_text: DESTROY THE INVADERS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd6f639fc0dc3c94284d642481f706a2, type: 2}
   m_sharedMaterial: {fileID: 5260771984406606351, guid: fd6f639fc0dc3c94284d642481f706a2, type: 2}
