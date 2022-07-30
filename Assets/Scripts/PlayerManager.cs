@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField playerNameInputField;
-    [SerializeField] SpriteRenderer playerNameSubmittedCheckMark;
+    [SerializeField] Image playerNameSubmittedCheckmark;
     [SerializeField] float playerNameSubmittedIndicationTime = 1f;
 
     Leaderboard leaderboard;
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         leaderboard = FindObjectOfType<Leaderboard>();
+        playerNameSubmittedCheckmark.enabled = false;
     }
 
     void Start()
@@ -40,9 +42,9 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator PlayerNameSubmittedIndicator(float time)
     {
-        playerNameSubmittedCheckMark.enabled = true;
+        playerNameSubmittedCheckmark.enabled = true;
         yield return new WaitForSeconds(time);
-        playerNameSubmittedCheckMark.enabled = false;
+        playerNameSubmittedCheckmark.enabled = false;
     }
 
     IEnumerator SetupRoutine()
