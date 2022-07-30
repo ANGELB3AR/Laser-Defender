@@ -7,7 +7,7 @@ public class ShieldPowerup : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float moveSpeed;
 
-    Shield shield;
+    [SerializeField] Shield shield;
 
     void Update()
     {
@@ -19,7 +19,7 @@ public class ShieldPowerup : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             shield = collision.GetComponent<Shield>();
-            shield.gameObject.SetActive(true);
+            shield.ActivateShield();
             StartCoroutine(CooldownTimer());
         }
     }
@@ -27,7 +27,7 @@ public class ShieldPowerup : MonoBehaviour
     IEnumerator CooldownTimer()
     {
         yield return new WaitForSeconds(cooldownTime);
-        shield.gameObject.SetActive(false);
+        shield.DeactivateShield();
         Destroy(gameObject);
     }
 }
