@@ -8,10 +8,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float sceneLoadDelay = 2f;
 
     ScoreKeeper scoreKeeper;
+    Leaderboard leaderboard;
 
     void Awake()
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        leaderboard = FindObjectOfType<Leaderboard>();
     }
 
     public void LoadGame()
@@ -38,6 +40,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator WaitAndLoad(string sceneName, float delay)
     {
+        yield return leaderboard.SubmitScoreRoutine(scoreKeeper.GetScore());
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);
     }
