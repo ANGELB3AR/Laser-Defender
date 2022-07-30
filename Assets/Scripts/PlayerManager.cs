@@ -7,6 +7,8 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField playerNameInputField;
+    [SerializeField] SpriteRenderer playerNameSubmittedCheckMark;
+    [SerializeField] float playerNameSubmittedIndicationTime = 1f;
 
     Leaderboard leaderboard;
 
@@ -27,12 +29,20 @@ public class PlayerManager : MonoBehaviour
             if (response.success)
             {
                 Debug.Log("Successfully set player name");
+                StartCoroutine(PlayerNameSubmittedIndicator(playerNameSubmittedIndicationTime));
             }
             else
             {
                 Debug.Log("Could not set player name " + response.Error);
             }
         });
+    }
+
+    IEnumerator PlayerNameSubmittedIndicator(float time)
+    {
+        playerNameSubmittedCheckMark.enabled = true;
+        yield return new WaitForSeconds(time);
+        playerNameSubmittedCheckMark.enabled = false;
     }
 
     IEnumerator SetupRoutine()
