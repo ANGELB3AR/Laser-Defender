@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        playerNameInputField.characterLimit = 20;
         StartCoroutine(SetupRoutine());
     }
 
