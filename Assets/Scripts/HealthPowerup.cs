@@ -10,7 +10,7 @@ public class HealthPowerup : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, -moveSpeed, 0);
+        transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

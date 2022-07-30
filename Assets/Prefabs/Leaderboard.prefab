@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519acc95ab61fd64294dbcc2d70b3dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardID: 5078
+  leaderboardID: 5080
+  playerNames: {fileID: 0}
+  playerScores: {fileID: 0}
