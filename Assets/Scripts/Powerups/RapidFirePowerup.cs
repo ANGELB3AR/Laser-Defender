@@ -8,7 +8,7 @@ public class RapidFirePowerup : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float moveSpeed;
 
-    Shooter shooter;
+    [SerializeField] Shooter shooter;
 
     void Update()
     {

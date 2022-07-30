@@ -18,7 +18,7 @@ public class ShieldPowerup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            shield = collision.GetComponent<Shield>();
+            shield = collision.GetComponentInChildren<Shield>();
             shield.ActivateShield();
             StartCoroutine(CooldownTimer());
         }
