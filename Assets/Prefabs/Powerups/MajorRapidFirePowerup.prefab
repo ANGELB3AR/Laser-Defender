@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4240446522788769707, guid: 6fa4fb3e49e01a24fa37b3a78c66b1bf, type: 3}
       propertyPath: moveSpeed
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4240446522788769707, guid: 6fa4fb3e49e01a24fa37b3a78c66b1bf, type: 3}
       propertyPath: cooldownTime

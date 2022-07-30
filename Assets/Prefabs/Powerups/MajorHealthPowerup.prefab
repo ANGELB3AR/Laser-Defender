@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8510618789746377137, guid: 0b4657c4b8e22b0448789cc718ad32ff, type: 3}
       propertyPath: moveSpeed
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8510618789746377137, guid: 0b4657c4b8e22b0448789cc718ad32ff, type: 3}
       propertyPath: amountOfHealthToRestore
