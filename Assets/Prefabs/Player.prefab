@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 255682539551848426}
   - component: {fileID: 3094843249504149974}
   - component: {fileID: -7203646788068555642}
-  - component: {fileID: 2984004604008354946}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -164,19 +163,6 @@ MonoBehaviour:
   isFiring: 0
   initialBaseFiringRate: 0
   initialMinFiringRate: 0
---- !u!114 &2984004604008354946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145350548725828505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc664cabb768131449ed5d93809a9be7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldObject: {fileID: 8959936874538410163}
 --- !u!1 &4776297974466951328
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +258,7 @@ GameObject:
   - component: {fileID: 2682955815899932686}
   - component: {fileID: 8402798924952341998}
   - component: {fileID: 165816324798818618}
+  - component: {fileID: 1377021023}
   m_Layer: 6
   m_Name: Shield
   m_TagString: Untagged
@@ -362,3 +349,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.72
+--- !u!114 &1377021023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959936874538410163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc664cabb768131449ed5d93809a9be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
