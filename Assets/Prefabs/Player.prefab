@@ -140,6 +140,7 @@ MonoBehaviour:
   points: 0
   hitEffect: {fileID: 5264116127226858780, guid: dbdc02499d264fb4380bd954d76b1639, type: 3}
   applyCameraShake: 1
+  canReceiveDamage: 0
 --- !u!114 &-7203646788068555642
 MonoBehaviour:
   m_ObjectHideFlags: 0

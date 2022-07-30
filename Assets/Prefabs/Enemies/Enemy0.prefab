@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1712364296063732239}
   m_Layer: 7
   m_Name: Enemy0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   firingRateVariance: 0.5
   minFiringRate: 0.1
   isFiring: 0
+  initialBaseFiringRate: 0
+  initialMinFiringRate: 0
 --- !u!1 &2925023601687330896
 GameObject:
   m_ObjectHideFlags: 0

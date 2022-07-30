@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] int points = 50;
     [SerializeField] ParticleSystem hitEffect;
     [SerializeField] bool applyCameraShake;
+    [SerializeField] bool canReceiveDamage = true;
 
     int initialHealth;
 
@@ -36,11 +37,18 @@ public class Health : MonoBehaviour
 
         if (damageDealer != null)
         {
-            TakeDamage(damageDealer.GetDamage());
-            PlayHitEffect();
-            audioPlayer.PlayDamageClip();
-            ShakeCamera();
-            damageDealer.Hit();
+            if (canReceiveDamage)
+            {
+                TakeDamage(damageDealer.GetDamage());
+                PlayHitEffect();
+                audioPlayer.PlayDamageClip();
+                ShakeCamera();
+                damageDealer.Hit();
+            }
+            else
+            {
+                audioPlayer.PlayShieldHitClip();
+            }
         }
     }
 
@@ -87,6 +95,11 @@ public class Health : MonoBehaviour
         {
             cameraShake.Play();
         }
+    }
+
+    public void ToggleCanReceiveDamage()
+    {
+        canReceiveDamage = !canReceiveDamage;
     }
 
     public int GetHealth()
