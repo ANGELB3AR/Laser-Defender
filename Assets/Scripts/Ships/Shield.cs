@@ -23,14 +23,4 @@ public class Shield : MonoBehaviour
         health.ToggleCanReceiveDamage();
         Debug.Log("Shields down");
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isActive && collision.CompareTag("Enemy"))
-        {
-            Debug.Log("Shield triggered by enemy");
-            collision.gameObject.SetActive(false);
-            Destroy(collision.gameObject);
-        }
-    }
 }

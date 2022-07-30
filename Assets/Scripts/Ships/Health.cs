@@ -48,6 +48,7 @@ public class Health : MonoBehaviour
             else
             {
                 audioPlayer.PlayShieldHitClip();
+                Destroy(collision.gameObject);
             }
         }
     }
