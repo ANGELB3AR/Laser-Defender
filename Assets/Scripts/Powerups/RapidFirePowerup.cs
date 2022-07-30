@@ -23,7 +23,6 @@ public class RapidFirePowerup : MonoBehaviour
             shooter.baseFiringRate = rapidFireRate;
             shooter.minFiringRate = rapidFireRate;
             StartCoroutine(CooldownTimer());
-            
         }
     }
 
