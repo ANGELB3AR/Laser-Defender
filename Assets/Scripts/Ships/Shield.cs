@@ -9,18 +9,20 @@ public class Shield : MonoBehaviour
 
     public void ActivateShield()
     {
+        isActive = true;
         health = GetComponentInParent<Health>();
         GetComponent<CircleCollider2D>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
-        health.ToggleCanReceiveDamage();
+        health.ReceiveDamage(!isActive);
         Debug.Log("Shields activated!");
     }
 
     public void DeactivateShield()
     {
+        isActive = false;
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
-        health.ToggleCanReceiveDamage();
+        health.ReceiveDamage(!isActive);
         Debug.Log("Shields down");
     }
 }

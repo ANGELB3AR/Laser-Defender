@@ -103,6 +103,11 @@ public class Health : MonoBehaviour
         canReceiveDamage = !canReceiveDamage;
     }
 
+    public void ReceiveDamage(bool status)
+    {
+        canReceiveDamage = status;
+    }
+
     public int GetHealth()
     {
         return health;
