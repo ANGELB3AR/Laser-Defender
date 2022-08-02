@@ -47,6 +47,7 @@ public class Health : MonoBehaviour
             }
             else
             {
+                // TODO: FIND A WAY TO DESTROY ENEMY PROJECTILES BUT NOT ENEMY SHIPS
                 audioPlayer.PlayShieldHitClip();
                 Destroy(collision.gameObject);
             }
