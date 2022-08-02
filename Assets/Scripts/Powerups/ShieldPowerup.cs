@@ -19,7 +19,7 @@ public class ShieldPowerup : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             shield = collision.GetComponentInChildren<Shield>();
-            shield.ActivateShield();
+            shield.ActivateShield(true);
             StartCoroutine(CooldownTimer());
         }
     }
@@ -27,7 +27,7 @@ public class ShieldPowerup : MonoBehaviour
     IEnumerator CooldownTimer()
     {
         yield return new WaitForSeconds(cooldownTime);
-        shield.DeactivateShield();
+        shield.ActivateShield(false);
         Destroy(gameObject);
     }
 }

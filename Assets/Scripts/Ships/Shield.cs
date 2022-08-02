@@ -5,24 +5,15 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     Health health;
-    bool isActive = false;
 
-    public void ActivateShield()
+    public void ActivateShield(bool isActivated)
     {
-        isActive = true;
-        health = GetComponentInParent<Health>();
-        GetComponent<CircleCollider2D>().enabled = true;
-        GetComponent<SpriteRenderer>().enabled = true;
-        health.ReceiveDamage(!isActive);
-        Debug.Log("Shields activated!");
-    }
-
-    public void DeactivateShield()
-    {
-        isActive = false;
-        GetComponent<CircleCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        health.ReceiveDamage(!isActive);
-        Debug.Log("Shields down");
+        if (isActivated)
+        {
+            health = GetComponentInParent<Health>();
+        }
+        GetComponent<CircleCollider2D>().enabled = isActivated;
+        GetComponent<SpriteRenderer>().enabled = isActivated;
+        health.ToggleCanReceiveDamage(!isActivated);
     }
 }

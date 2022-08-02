@@ -98,12 +98,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void ToggleCanReceiveDamage()
-    {
-        canReceiveDamage = !canReceiveDamage;
-    }
-
-    public void ReceiveDamage(bool status)
+    public void ToggleCanReceiveDamage(bool status)
     {
         canReceiveDamage = status;
     }
