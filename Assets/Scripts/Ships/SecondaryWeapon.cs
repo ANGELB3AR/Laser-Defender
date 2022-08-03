@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SecondaryWeapon : MonoBehaviour
 {
-    [SerializeField] WeaponPickup weapon;
-    [SerializeField] int currentAmmo;
+    public WeaponPickup weapon;
+    public int currentAmmo;
 
     void Update()
     {

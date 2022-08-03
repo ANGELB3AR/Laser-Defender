@@ -11,9 +11,24 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float moveSpeed = 1f;
 
+    bool activated = false;
+
     void Update()
     {
+        if (activated) { return; }
         transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            SecondaryWeapon gun = collision.GetComponent<SecondaryWeapon>();
+            GetComponent<SpriteRenderer>().enabled = false;
+            gun.weapon = this;
+            gun.currentAmmo = this.startingAmmo;
+            activated = true;
+        }
     }
 
 
