@@ -10,6 +10,7 @@ public class SecondaryWeapon : MonoBehaviour
 
     void Update()
     {
+        if (currentWeapon == null) { return; }
         OnSecondaryFire();
     }
 
