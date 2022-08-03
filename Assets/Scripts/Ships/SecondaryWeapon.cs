@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SecondaryWeapon : MonoBehaviour
 {
-    [SerializeField] Weapon weapon;
+    [SerializeField] WeaponPickup weapon;
     [SerializeField] int currentAmmo;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && currentAmmo > 0)
         {
             FireWeapon();
         }

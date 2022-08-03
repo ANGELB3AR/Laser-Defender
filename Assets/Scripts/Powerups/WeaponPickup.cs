@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon Pickup", menuName = "Pickups/Secondary Weapon")]
-public class Weapon : ScriptableObject
+public class WeaponPickup : ScriptableObject
 {
     public WeaponType type;
     public int startingAmmo;
 
     [SerializeField] GameObject projectile;
+    [SerializeField] Sprite pickupIcon;
+
+
 
     public void FireWeapon(WeaponType type)
     {
