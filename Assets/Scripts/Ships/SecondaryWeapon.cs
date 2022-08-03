@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SecondaryWeapon : MonoBehaviour
 {
-    public WeaponPickup weapon;
+    public WeaponPickup currentWeapon;
     public int currentAmmo;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && currentAmmo > 0)
-        {
-            FireWeapon();
-        }
+        OnSecondaryFire();
+    }
+
+    void OnSecondaryFire()
+    {
+        FireWeapon();
     }
 
     void FireWeapon()
     {
-        weapon.FireWeapon(weapon.type);
+        currentWeapon.FireWeapon(currentWeapon.type);
         currentAmmo--;
     }
 }
