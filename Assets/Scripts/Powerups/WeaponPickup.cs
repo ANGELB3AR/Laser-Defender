@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon Pickup", menuName = "Pickups/Secondary Weapon")]
-public class WeaponPickup : ScriptableObject
+public class WeaponPickup : MonoBehaviour
 {
     public WeaponType type;
     public int startingAmmo;
 
     [SerializeField] GameObject projectile;
-    [SerializeField] Sprite pickupIcon;
+    [SerializeField] float moveSpeed = 1f;
 
+    void Update()
+    {
+        transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
+    }
 
 
     public void FireWeapon(WeaponType type)
@@ -32,7 +35,7 @@ public class WeaponPickup : ScriptableObject
 
     void FireProximityBomb()
     {
-        throw new NotImplementedException();
+        Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
     void FireHomingMissiles()

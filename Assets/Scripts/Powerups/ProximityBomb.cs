@@ -17,6 +17,6 @@ public class ProximityBomb : MonoBehaviour
 
     void Explode()
     {
-        throw new NotImplementedException();
+        explosionRadius.enabled = true;
     }
 }
