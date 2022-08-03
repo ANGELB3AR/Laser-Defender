@@ -26,7 +26,7 @@ public class WeaponPickup : MonoBehaviour
             SecondaryWeapon gun = collision.GetComponent<SecondaryWeapon>();
             GetComponent<SpriteRenderer>().enabled = false;
             gun.currentWeapon = this;
-            gun.currentAmmo = this.startingAmmo;
+            gun.currentAmmo = startingAmmo;
             activated = true;
         }
     }
