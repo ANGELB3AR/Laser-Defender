@@ -8,11 +8,6 @@ public class SecondaryWeapon : MonoBehaviour
     public WeaponPickup currentWeapon;
     public int currentAmmo;
 
-    void Update()
-    {
-        if (currentWeapon == null) { return; }
-    }
-
     void OnFireSecondary(InputValue value)
     {
         if (value.isPressed)
