@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ProximityBomb : MonoBehaviour
 {
-    [SerializeField] CircleCollider2D explosionRadius;
     [SerializeField] float destroySelfDelayTime = 0.5f;
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] GameObject damageEffects;
 
     void Update()
     {
@@ -24,9 +24,8 @@ public class ProximityBomb : MonoBehaviour
 
     void Explode()
     {
-        explosionRadius.enabled = true;
+        Instantiate(damageEffects, transform);
         StartCoroutine(DelayBeforeDestroyingProjectile(destroySelfDelayTime));
-        // TODO: Play explosion effects
     }
 
     IEnumerator DelayBeforeDestroyingProjectile(float delay)

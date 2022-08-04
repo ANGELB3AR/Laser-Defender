@@ -85,6 +85,7 @@ MonoBehaviour:
   explosionRadius: {fileID: 0}
   destroySelfDelayTime: 0.5
   moveSpeed: 5
+  damageEffects: {fileID: 9205882958714205964, guid: 90da0704ffe7ffd4c955b2e526dee775, type: 3}
 --- !u!58 &7604891945592511304
 CircleCollider2D:
   m_ObjectHideFlags: 0
