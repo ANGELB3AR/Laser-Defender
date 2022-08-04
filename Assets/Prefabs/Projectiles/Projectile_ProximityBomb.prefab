@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   shouldBeDestroyedOnImpact: 0
-  timeDelay: 0.5
+  timeDelay: 1
 --- !u!114 &771465198476071390
 MonoBehaviour:
   m_ObjectHideFlags: 0
