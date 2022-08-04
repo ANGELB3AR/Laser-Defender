@@ -25,6 +25,7 @@ public class ProximityBomb : MonoBehaviour
     void Explode()
     {
         Instantiate(damageEffects, transform);
+        print("Should have instatiated particle effect");
         StartCoroutine(DelayBeforeDestroyingProjectile(destroySelfDelayTime));
     }
 

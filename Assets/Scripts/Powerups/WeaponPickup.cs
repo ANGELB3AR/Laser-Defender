@@ -12,6 +12,7 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
 
     bool activated = false;
+    Player player;
 
     void Update()
     {
@@ -23,6 +24,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.GetComponent<Player>();
             SecondaryWeapon gun = collision.GetComponent<SecondaryWeapon>();
             GetComponent<SpriteRenderer>().enabled = false;
             gun.currentWeapon = this;
@@ -50,7 +52,7 @@ public class WeaponPickup : MonoBehaviour
 
     void FireProximityBomb()
     {
-        Instantiate(projectile, transform.position, Quaternion.identity);
+        Instantiate(projectile, player.transform.position, Quaternion.identity);
     }
 
     void FireHomingMissiles()
