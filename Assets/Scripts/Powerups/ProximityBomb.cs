@@ -25,7 +25,7 @@ public class ProximityBomb : MonoBehaviour
     void Explode()
     {
         Instantiate(damageEffects, transform);
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         StartCoroutine(DelayBeforeDestroyingProjectile(destroySelfDelayTime));
     }
 
