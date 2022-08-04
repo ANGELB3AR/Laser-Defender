@@ -25,7 +25,7 @@ public class ProximityBomb : MonoBehaviour
     void Explode()
     {
         Instantiate(damageEffects, transform);
-        print("Should have instatiated particle effect");
+        GetComponent<SpriteRenderer>().enabled = false;
         StartCoroutine(DelayBeforeDestroyingProjectile(destroySelfDelayTime));
     }
 

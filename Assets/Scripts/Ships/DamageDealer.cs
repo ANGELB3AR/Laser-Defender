@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] int damage = 10;
+    [SerializeField] bool shouldBeDestroyedOnImpact = true;
 
     public int GetDamage()
     {
@@ -13,6 +14,9 @@ public class DamageDealer : MonoBehaviour
 
     public void Hit()
     {
-        Destroy(gameObject);
+        if (shouldBeDestroyedOnImpact)
+        {
+            Destroy(gameObject);
+        }
     }
 }

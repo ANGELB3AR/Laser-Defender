@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  shouldBeDestroyedOnImpact: 0
 --- !u!114 &771465198476071390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a43761f19defdf4aaac0f543425b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: {fileID: 0}
   destroySelfDelayTime: 0.5
   moveSpeed: 5
   damageEffects: {fileID: 9205882958714205964, guid: 90da0704ffe7ffd4c955b2e526dee775, type: 3}
