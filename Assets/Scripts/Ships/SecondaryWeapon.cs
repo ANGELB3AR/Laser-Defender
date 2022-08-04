@@ -18,6 +18,7 @@ public class SecondaryWeapon : MonoBehaviour
 
     void FireWeapon()
     {
+        if (currentWeapon == null) { return; }
         currentWeapon.FireWeapon(currentWeapon.type);
         currentAmmo--;
 
