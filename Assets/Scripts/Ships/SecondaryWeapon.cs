@@ -11,12 +11,14 @@ public class SecondaryWeapon : MonoBehaviour
     void Update()
     {
         if (currentWeapon == null) { return; }
-        OnSecondaryFire();
     }
 
-    void OnSecondaryFire()
+    void OnFireSecondary(InputValue value)
     {
-        FireWeapon();
+        if (value.isPressed)
+        {
+            FireWeapon();
+        }
     }
 
     void FireWeapon()

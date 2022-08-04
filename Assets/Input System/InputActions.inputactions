@@ -34,9 +34,9 @@
                 },
                 {
                     "name": "FireSecondary",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "232de83d-4d70-4e4c-9ae4-44abd89114f8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
