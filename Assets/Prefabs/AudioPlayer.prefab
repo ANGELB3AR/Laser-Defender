@@ -51,6 +51,10 @@ MonoBehaviour:
   damageVolume: 0.5
   shieldHitClip: {fileID: 8300000, guid: 49e32c82c80aadd43bffc6ea148ffa9c, type: 3}
   shieldHitVolume: 0.5
+  shieldActivateClip: {fileID: 8300000, guid: 61caeb6e9e9f6444cac6762e12eb2499, type: 3}
+  shieldActivateVolume: 1
+  shieldDeactivateClip: {fileID: 8300000, guid: 28f1ef6441110704a83af41103dfebf8, type: 3}
+  shieldDeactivateVolume: 1
 --- !u!82 &5799540565629016507
 AudioSource:
   m_ObjectHideFlags: 0

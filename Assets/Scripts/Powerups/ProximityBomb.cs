@@ -7,6 +7,12 @@ public class ProximityBomb : MonoBehaviour
 {
     [SerializeField] CircleCollider2D explosionRadius;
     [SerializeField] float destroySelfDelayTime = 0.5f;
+    [SerializeField] float moveSpeed = 5f;
+
+    void Update()
+    {
+        transform.Translate(0, moveSpeed * Time.deltaTime, 0);
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -7,7 +7,13 @@ public class ShieldPowerup : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float moveSpeed;
 
-    [SerializeField] Shield shield;
+    Shield shield;
+    AudioPlayer audioPlayer;
+
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
 
     void Update()
     {
@@ -20,6 +26,7 @@ public class ShieldPowerup : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             shield = collision.GetComponentInChildren<Shield>();
             shield.ActivateShield(true);
+            audioPlayer.PlayShieldActivateClip();
             StartCoroutine(CooldownTimer());
         }
     }
@@ -28,6 +35,7 @@ public class ShieldPowerup : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownTime);
         shield.ActivateShield(false);
+        audioPlayer.PlayShieldDeactivateClip();
         Destroy(gameObject);
     }
 }
