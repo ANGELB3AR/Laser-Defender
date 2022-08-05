@@ -37,5 +37,15 @@ public class UIDisplay : MonoBehaviour
         scoreText.text = scoreKeeper.GetScore().ToString("000000000");
         ammoText.text = secondaryWeapon.GetCurrentAmmo().ToString();
         weaponImage.overrideSprite = secondaryWeapon.GetWeaponSprite();
+        if (secondaryWeapon.GetCurrentAmmo() == 0)
+        {
+            ammoText.enabled = false;
+            weaponImage.enabled = false;
+        }
+        else
+        {
+            ammoText.enabled = true;
+            weaponImage.enabled = true;
+        }
     }
 }
