@@ -139,5 +139,4 @@ MonoBehaviour:
   type: 0
   startingAmmo: 3
   projectile: {fileID: 7178562516781210660, guid: d0173c56fe7636e4386a055562f319c6, type: 3}
-  pickupIcon: {fileID: 21300000, guid: 6bc1e624f9073ae42bfc4d44b4fbfdf5, type: 3}
-  moveSpeed: 1
+  moveSpeed: 2
