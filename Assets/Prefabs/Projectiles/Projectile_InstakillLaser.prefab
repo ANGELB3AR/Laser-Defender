@@ -270,3 +270,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 5
+  offset: {x: 0, y: 2.8, z: 0}

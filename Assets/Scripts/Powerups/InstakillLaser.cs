@@ -5,6 +5,7 @@ using UnityEngine;
 public class InstakillLaser : MonoBehaviour
 {
     [SerializeField] float cooldownTime = 5f;
+    [SerializeField] Vector3 offset = new Vector3();
 
     Player player;
 
@@ -20,7 +21,7 @@ public class InstakillLaser : MonoBehaviour
 
     void Update()
     {
-        transform.position = player.transform.position;
+        transform.position = player.transform.position + offset;
     }
 
     IEnumerator CooldownTimer(float time)

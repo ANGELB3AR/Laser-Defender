@@ -62,6 +62,6 @@ public class WeaponPickup : MonoBehaviour
 
     void ActivateInstakillLasers()
     {
-        throw new NotImplementedException();
+        Instantiate(projectile, player.transform.position, Quaternion.identity);
     }
 }
