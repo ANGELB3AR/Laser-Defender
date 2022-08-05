@@ -57,7 +57,7 @@ public class WeaponPickup : MonoBehaviour
 
     void FireHomingMissiles()
     {
-        throw new NotImplementedException();
+        Instantiate(projectile, player.transform.position, Quaternion.identity);
     }
 
     void ActivateInstakillLasers()
