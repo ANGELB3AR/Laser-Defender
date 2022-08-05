@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class HomingMissile : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float moveSpeed = 1f;
+
+    GameObject currentTarget;
+
     void Start()
     {
-        
+        currentTarget = GameObject.FindGameObjectWithTag("Enemy");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(currentTarget.transform.position);
+        Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
     }
 }
