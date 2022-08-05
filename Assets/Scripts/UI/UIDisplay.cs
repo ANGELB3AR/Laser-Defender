@@ -28,7 +28,7 @@ public class UIDisplay : MonoBehaviour
     void Start()
     {
         healthSlider.maxValue = playerHealth.GetHealth();
-        weaponImage = null;
+        weaponImage.overrideSprite = null;
     }
 
     void Update()

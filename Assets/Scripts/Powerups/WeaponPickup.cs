@@ -11,12 +11,10 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float moveSpeed = 1f;
 
-    bool activated = false;
     Player player;
 
     void Update()
     {
-        if (activated) { return; }
         transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
     }
 
@@ -29,7 +27,6 @@ public class WeaponPickup : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             gun.currentWeapon = this;
             gun.currentAmmo = startingAmmo;
-            activated = true;
         }
     }
 
@@ -63,5 +60,10 @@ public class WeaponPickup : MonoBehaviour
     void ActivateInstakillLasers()
     {
         Instantiate(projectile, player.transform.position, Quaternion.identity);
+    }
+
+    public void DeactivateWeapon()
+    {
+        Destroy(gameObject);
     }
 }
