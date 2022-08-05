@@ -8,7 +8,13 @@ public class RapidFirePowerup : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float moveSpeed;
 
-    [SerializeField] Shooter shooter;
+    Shooter shooter;
+    AudioPlayer audioPlayer;
+
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
 
     void Update()
     {
@@ -22,6 +28,7 @@ public class RapidFirePowerup : MonoBehaviour
             shooter = collision.GetComponent<Shooter>();
             shooter.baseFiringRate = rapidFireRate;
             shooter.minFiringRate = rapidFireRate;
+            audioPlayer.PlayRapidfirePickupClip();
             StartCoroutine(CooldownTimer());
         }
     }
@@ -31,6 +38,7 @@ public class RapidFirePowerup : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         shooter.baseFiringRate = shooter.initialBaseFiringRate;
         shooter.minFiringRate = shooter.initialMinFiringRate;
+        audioPlayer.PlayRapidfireDeactivationClip();
         Destroy(gameObject);
     }
 }

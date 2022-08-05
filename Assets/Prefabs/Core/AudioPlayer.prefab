@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingClip: {fileID: 8300000, guid: a5cfa8b80a5fcc944853101ea21211f1, type: 3}
   shootingVolume: 0.2
+  fireSecondaryClip: {fileID: 8300000, guid: b51f95dc81c73f14db149f2e3cdc47bf, type: 3}
+  fireSecondaryVolume: 1
   damageClip: {fileID: 8300000, guid: e8cc488af282a7a48a5276a6b65c0346, type: 3}
   damageVolume: 0.5
   shieldHitClip: {fileID: 8300000, guid: 49e32c82c80aadd43bffc6ea148ffa9c, type: 3}
@@ -55,6 +57,14 @@ MonoBehaviour:
   shieldActivateVolume: 1
   shieldDeactivateClip: {fileID: 8300000, guid: 28f1ef6441110704a83af41103dfebf8, type: 3}
   shieldDeactivateVolume: 1
+  weaponPickupClip: {fileID: 8300000, guid: 69691df3dc4c01b419ed48a56319af62, type: 3}
+  weaponPickupVolume: 1
+  healthPickupClip: {fileID: 8300000, guid: f175cff81a47f7741864088b8b45f3ac, type: 3}
+  healthPickupVolume: 1
+  rapidfirePickupClip: {fileID: 8300000, guid: 708e95adcf58d784092e21542baffab2, type: 3}
+  rapidfirePickupVolume: 0.3
+  rapidfireDeactivationClip: {fileID: 8300000, guid: d51268c4e55a35c4da48b50dfcc3872e, type: 3}
+  rapidfireDeactivationVolume: 0.1
 --- !u!82 &5799540565629016507
 AudioSource:
   m_ObjectHideFlags: 0

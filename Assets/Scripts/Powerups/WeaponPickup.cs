@@ -13,6 +13,12 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
 
     Player player;
+    AudioPlayer audioPlayer;
+
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
 
     void Update()
     {
@@ -28,6 +34,7 @@ public class WeaponPickup : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             gun.currentWeapon = this;
             gun.currentAmmo = startingAmmo;
+            audioPlayer.PlayWeaponPickupClip();
         }
     }
 
@@ -51,16 +58,19 @@ public class WeaponPickup : MonoBehaviour
     void FireProximityBomb()
     {
         Instantiate(projectile, player.transform.position, Quaternion.identity);
+        audioPlayer.PlayFireSecondaryClip();
     }
 
     void FireHomingMissiles()
     {
         Instantiate(projectile, player.transform.position, Quaternion.identity);
+        audioPlayer.PlayFireSecondaryClip();
     }
 
     void ActivateInstakillLasers()
     {
         Instantiate(projectile, player.transform.position, Quaternion.identity);
+        audioPlayer.PlayFireSecondaryClip();
     }
 
     public void DeactivateWeapon()

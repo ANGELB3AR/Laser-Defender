@@ -8,6 +8,13 @@ public class HealthPowerup : MonoBehaviour
     [SerializeField] int amountOfHealthToRestore;
     [SerializeField] float moveSpeed;
 
+    AudioPlayer audioPlayer;
+
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
+
     void Update()
     {
         transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
@@ -18,6 +25,7 @@ public class HealthPowerup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<Health>().RestoreHealth(amountOfHealthToRestore);
+            audioPlayer.PlayHealthPickupClip();
             Destroy(gameObject);
         }
     }

@@ -7,6 +7,9 @@ public class AudioPlayer : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] AudioClip shootingClip;
     [SerializeField] [Range(0f,1f)] float shootingVolume = 1f;
+    [SerializeField] AudioClip fireSecondaryClip;
+    [SerializeField] [Range(0f, 1f)] float fireSecondaryVolume = 1f;
+
 
     [Header("Damage")]
     [SerializeField] AudioClip damageClip;
@@ -19,6 +22,16 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] float shieldActivateVolume = 1f;
     [SerializeField] AudioClip shieldDeactivateClip;
     [SerializeField] [Range(0f, 1f)] float shieldDeactivateVolume = 1f;
+
+    [Header("Pickups")]
+    [SerializeField] AudioClip weaponPickupClip;
+    [SerializeField] [Range(0f, 1f)] float weaponPickupVolume = 1f;
+    [SerializeField] AudioClip healthPickupClip;
+    [SerializeField] [Range(0f, 1f)] float healthPickupVolume = 1f;
+    [SerializeField] AudioClip rapidfirePickupClip;
+    [SerializeField] [Range(0f, 1f)] float rapidfirePickupVolume = 1f;
+    [SerializeField] AudioClip rapidfireDeactivationClip;
+    [SerializeField] [Range(0f, 1f)] float rapidfireDeactivationVolume = 1f;
 
 
     static AudioPlayer instance;
@@ -47,6 +60,11 @@ public class AudioPlayer : MonoBehaviour
         PlayClip(shootingClip, shootingVolume);
     }
 
+    public void PlayFireSecondaryClip()
+    {
+        PlayClip(fireSecondaryClip, fireSecondaryVolume);
+    }
+
     public void PlayDamageClip()
     {
         PlayClip(damageClip, damageVolume);
@@ -65,6 +83,26 @@ public class AudioPlayer : MonoBehaviour
     public void PlayShieldDeactivateClip()
     {
         PlayClip(shieldDeactivateClip, shieldDeactivateVolume);
+    }
+
+    public void PlayWeaponPickupClip()
+    {
+        PlayClip(weaponPickupClip, weaponPickupVolume);
+    }
+
+    public void PlayHealthPickupClip()
+    {
+        PlayClip(healthPickupClip, healthPickupVolume);
+    }
+
+    public void PlayRapidfirePickupClip()
+    {
+        PlayClip(rapidfirePickupClip, rapidfirePickupVolume);
+    }
+
+    public void PlayRapidfireDeactivationClip()
+    {
+        PlayClip(rapidfireDeactivationClip, rapidfireDeactivationVolume);
     }
 
 
