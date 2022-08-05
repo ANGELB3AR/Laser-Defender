@@ -10,12 +10,27 @@ public class HomingMissile : MonoBehaviour
 
     void Start()
     {
-        currentTarget = GameObject.FindGameObjectWithTag("Enemy");
+        FindNewTarget();
     }
 
     void Update()
     {
-        transform.LookAt(currentTarget.transform.position);
-        Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
+        if (currentTarget == null)
+        {
+            FindNewTarget();
+        }
+
+        ChaseTarget();
+    }
+
+    void FindNewTarget()
+    {
+        currentTarget = GameObject.FindGameObjectWithTag("Enemy");
+    }
+
+    void ChaseTarget()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
+        transform.up = currentTarget.transform.position - transform.position;
     }
 }
