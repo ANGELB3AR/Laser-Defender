@@ -27,4 +27,15 @@ public class SecondaryWeapon : MonoBehaviour
             currentWeapon = null;
         }
     }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
+    public Sprite GetWeaponSprite()
+    {
+        if (currentWeapon == null) { return null; }
+        return currentWeapon.GetComponent<Sprite>();
+    }
 }

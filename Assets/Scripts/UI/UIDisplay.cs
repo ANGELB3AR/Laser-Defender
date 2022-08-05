@@ -14,19 +14,28 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     ScoreKeeper scoreKeeper;
 
+    [Header("Secondary Weapon")]
+    [SerializeField] Image weaponImage;
+    [SerializeField] TextMeshProUGUI ammoText;
+    SecondaryWeapon secondaryWeapon;
+
     void Awake()
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        secondaryWeapon = FindObjectOfType<SecondaryWeapon>();
     }
 
     void Start()
     {
         healthSlider.maxValue = playerHealth.GetHealth();
+        weaponImage = null;
     }
 
     void Update()
     {
         healthSlider.value = playerHealth.GetHealth();
         scoreText.text = scoreKeeper.GetScore().ToString("000000000");
+        ammoText.text = secondaryWeapon.GetCurrentAmmo().ToString();
+        weaponImage.overrideSprite = secondaryWeapon.GetWeaponSprite();
     }
 }
