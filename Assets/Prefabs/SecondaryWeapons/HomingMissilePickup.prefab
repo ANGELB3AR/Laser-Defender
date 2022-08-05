@@ -138,5 +138,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   startingAmmo: 10
-  projectile: {fileID: 0}
+  projectile: {fileID: 7178562516781210660, guid: 036a136f69c6c4e4bbca3e154433e844, type: 3}
   moveSpeed: 1
