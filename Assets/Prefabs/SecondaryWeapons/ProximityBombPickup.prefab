@@ -124,6 +124,7 @@ MonoBehaviour:
   startingAmmo: 3
   projectile: {fileID: 7178562516781210660, guid: d0173c56fe7636e4386a055562f319c6, type: 3}
   moveSpeed: 2
+  rotationSpeed: -50
 --- !u!70 &3027191192938292068
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

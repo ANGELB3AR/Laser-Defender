@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: startingAmmo
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2598567214866403847, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
+      propertyPath: rotationSpeed
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 4240446522788769706, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
       propertyPath: m_Name
       value: ProximityBombPickup(BIG)
