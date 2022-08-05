@@ -7,6 +7,7 @@ public class WeaponPickup : MonoBehaviour
 {
     public WeaponType type;
     public int startingAmmo;
+    public Sprite icon;
 
     [SerializeField] GameObject projectile;
     [SerializeField] float moveSpeed = 1f;

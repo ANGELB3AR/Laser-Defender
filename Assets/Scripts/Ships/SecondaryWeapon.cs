@@ -37,6 +37,6 @@ public class SecondaryWeapon : MonoBehaviour
     public Sprite GetWeaponSprite()
     {
         if (currentWeapon == null) { return null; }
-        return currentWeapon.GetComponent<Sprite>();
+        return currentWeapon.icon;
     }
 }

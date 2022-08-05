@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2598567214866403847, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 314e331b5a1bdfc479e5f3b7770da4e2, type: 3}
+    - target: {fileID: 2598567214866403847, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
