@@ -10,7 +10,6 @@ public class WeaponPickup : MonoBehaviour
 
     [SerializeField] GameObject projectile;
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float rotationSpeed = 1f;
 
     bool activated = false;
     Player player;
@@ -19,7 +18,6 @@ public class WeaponPickup : MonoBehaviour
     {
         if (activated) { return; }
         transform.Translate(0, -moveSpeed * Time.deltaTime, 0);
-        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
