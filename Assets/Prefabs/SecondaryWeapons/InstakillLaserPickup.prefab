@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4240446522788769708}
   - component: {fileID: 4240446522788769710}
   - component: {fileID: 2598567214866403847}
-  - component: {fileID: -6337216954325188347}
+  - component: {fileID: -2883917867543133349}
   m_Layer: 8
   m_Name: InstakillLaserPickup
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7a461a9af728b974fb4adcd0152d7da4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55cf389ef0345f14dad1d0e274af8063, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   startingAmmo: 1
   projectile: {fileID: 7178562516781210660, guid: 0d7a3a02ed6f2eb488bce7e2b73c4069, type: 3}
   moveSpeed: 2
---- !u!61 &-6337216954325188347
-BoxCollider2D:
+--- !u!70 &-2883917867543133349
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,15 +138,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.33}
-    newSize: {x: 2.5, y: 3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.34, y: 0.33}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.22, y: 0.21}
+  m_Direction: 0

@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProximityBombPickup(BIG)
       objectReference: {fileID: 0}
+    - target: {fileID: 4240446522788769708, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 314e331b5a1bdfc479e5f3b7770da4e2, type: 3}
     - target: {fileID: 4240446522788769709, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -73,6 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4240446522788769711, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 546b8430cb105ca4389c32f5d0978ab6, type: 3}
 --- !u!1 &5888210805726903697 stripped
 GameObject:
@@ -96,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.33}
+    oldSize: {x: 0.22, y: 0.21}
     newSize: {x: 2.5, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -105,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34, y: 0.33}
   m_EdgeRadius: 0
+--- !u!70 &-7877328983420478984
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5888210805726903697}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.22, y: 0.21}
+  m_Direction: 0
