@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     [SerializeField] float moveSpeed;
 
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!IsOwner) { return; }
+
         Move();
     }
 
@@ -41,6 +44,12 @@ public class Player : MonoBehaviour
     }
 
     private void Move()
+    {
+        MoveServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void MoveServerRpc()
     {
         Vector2 delta = rawInput * moveSpeed * Time.deltaTime;
         Vector2 newPos = new Vector2();
