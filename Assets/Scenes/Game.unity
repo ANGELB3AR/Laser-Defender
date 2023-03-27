@@ -777,8 +777,8 @@ MonoBehaviour:
   - {fileID: 1088948994}
   - {fileID: 1116520877}
   - {fileID: 195923942}
-  minEmissionTime: 1
-  maxEmissionTime: 2
+  minEmissionTime: 5
+  maxEmissionTime: 20
 --- !u!4 &858113200
 Transform:
   m_ObjectHideFlags: 0
