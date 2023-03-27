@@ -14,7 +14,6 @@ public class Player : NetworkBehaviour
     [SerializeField] float paddingTop;
     [SerializeField] float paddingBottom;
 
-    Vector2 rawInput;
     Vector2 minBounds;
     Vector2 maxBounds;
     Shooter shooter;
@@ -32,11 +31,9 @@ public class Player : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) { return; }
-        if (!IsLocalPlayer) { return; }
         if (!Application.isFocused) { return; }
 
-        Move();
-        Debug.Log($"Player {OwnerClientId} is Owner = {IsOwner}");
+        HandleMovement();
     }
 
     void InitializeBounds()
@@ -46,15 +43,14 @@ public class Player : NetworkBehaviour
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
-    private void Move()
+    private void HandleMovement()
     {
-        Debug.Log($"Currently moving with {rawInput} input");
-        Vector2 delta = rawInput * moveSpeed * Time.deltaTime;
+        Vector2 inputVector = PlayerInput.Instance.GetMovementVectorNormalized();
+        Vector2 delta = inputVector * moveSpeed * Time.deltaTime;
         Vector2 newPos = new Vector2();
 
         newPos.x = Mathf.Clamp(transform.position.x + delta.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
         newPos.y = Mathf.Clamp(transform.position.y + delta.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
-        Debug.Log("New Position: " + newPos);
 
         MoveServerRpc(newPos);
     }
@@ -63,18 +59,6 @@ public class Player : NetworkBehaviour
     void MoveServerRpc(Vector2 newPos)
     {
         transform.position = newPos;
-        DebugLogger(newPos);
-    }
-
-    void DebugLogger(Vector2 newPos)
-    {
-        Debug.Log($"Move RPC called: moving to {newPos}");
-    }
-
-    void OnMove(InputValue value)
-    {
-        rawInput = value.Get<Vector2>();
-        Debug.Log($"Raw Input: {rawInput}");
     }
 
     void OnFire(InputValue value)
