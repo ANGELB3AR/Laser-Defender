@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
-  SyncPositionY: 1
+  SyncPositionY: 0
   SyncPositionZ: 0
-  SyncRotAngleX: 1
+  SyncRotAngleX: 0
   SyncRotAngleY: 0
   SyncRotAngleZ: 0
   SyncScaleX: 0
