@@ -740,7 +740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &858113199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,6 +1841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1769982976}
   - component: {fileID: 1769982975}
+  - component: {fileID: 1769982977}
   m_Layer: 0
   m_Name: WeaponEmitter
   m_TagString: Untagged
@@ -1884,8 +1885,8 @@ MonoBehaviour:
   - {fileID: 2039102721}
   - {fileID: 86888195}
   - {fileID: 1952016035}
-  minEmissionTime: 5
-  maxEmissionTime: 20
+  minEmissionTime: 1
+  maxEmissionTime: 2
 --- !u!4 &1769982976
 Transform:
   m_ObjectHideFlags: 0
@@ -1911,6 +1912,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1769982977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769982974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1632686786
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1849506292
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class SecondaryWeapon : MonoBehaviour
 
         if (currentAmmo == 0)
         {
-            currentWeapon.DeactivateWeapon();
+            currentWeapon.DeactivateWeaponServerRpc();
             currentWeapon = null;
         }
     }

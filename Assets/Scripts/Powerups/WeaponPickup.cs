@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class WeaponPickup : MonoBehaviour
+public class WeaponPickup : NetworkBehaviour
 {
     public WeaponType type;
     public int startingAmmo;
@@ -73,8 +74,9 @@ public class WeaponPickup : MonoBehaviour
         audioPlayer.PlayFireSecondaryClip();
     }
 
-    public void DeactivateWeapon()
+    [ServerRpc(RequireOwnership = false)]
+    public void DeactivateWeaponServerRpc()
     {
-        Destroy(gameObject);
+        GetComponent<NetworkObject>().Despawn();
     }
 }
