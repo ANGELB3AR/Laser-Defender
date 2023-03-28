@@ -8,7 +8,6 @@ public class Shooter : NetworkBehaviour
     [Header("General")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] float projectileLifetime = 5f;
     public float baseFiringRate = 0.2f;
     [Header("AI")]
     [SerializeField] bool useAI;
@@ -63,8 +62,6 @@ public class Shooter : NetworkBehaviour
         {
             SpawnProjectileServerRpc();
             
-            Destroy(projectileInstance, projectileLifetime);
-
             float timeToNextProjectile = Random.Range(baseFiringRate - firingRateVariance,
                                                         baseFiringRate + firingRateVariance);
             timeToNextProjectile = Mathf.Clamp(timeToNextProjectile, minFiringRate, float.MaxValue);
@@ -87,10 +84,4 @@ public class Shooter : NetworkBehaviour
             rb2d.velocity = transform.up * projectileSpeed;
         }
     }
-
-    //[ServerRpc(RequireOwnership = false)]
-    //void DestroyProjectileServerRpc()
-    //{
-    //    projectileInstance.GetComponent<NetworkObject>().Despawn();
-    //}
 }
