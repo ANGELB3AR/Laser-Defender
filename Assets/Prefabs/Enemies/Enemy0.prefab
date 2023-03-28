@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   shouldBeDestroyedOnImpact: 1
-  timeDelay: 1
+  timeDelay: 30
 --- !u!114 &-1712364296063732239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7178562516781210660, guid: ae1fc922948ba024cb7232decc508312, type: 3}
   projectileSpeed: 10
-  projectileLifetime: 5
   baseFiringRate: 1
   useAI: 1
   firingRateVariance: 0.5
