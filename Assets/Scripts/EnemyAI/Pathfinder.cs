@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Pathfinder : MonoBehaviour
+public class Pathfinder : NetworkBehaviour
 {
     EnemySpawner enemySpawner;
     WaveConfigSO waveConfig;
-    List<Transform> waypoints;
+    List<Transform> waypoints = new List<Transform>();
     int waypointIndex = 0;
 
     void Awake()
@@ -16,6 +17,8 @@ public class Pathfinder : MonoBehaviour
 
     void Start()
     {
+        if (!IsServer) { return; }
+
         waveConfig = enemySpawner.GetCurrentWave();
         waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[waypointIndex].position;
@@ -23,6 +26,8 @@ public class Pathfinder : MonoBehaviour
 
     void Update()
     {
+        if (!IsServer) { return; }
+
         FollowPath();
     }
 
