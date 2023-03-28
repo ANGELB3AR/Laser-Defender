@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class HealthPowerup : MonoBehaviour
+public class HealthPowerup : NetworkBehaviour
 {
     [SerializeField] int amountOfHealthToRestore;
     [SerializeField] float moveSpeed;
@@ -26,7 +27,13 @@ public class HealthPowerup : MonoBehaviour
         {
             collision.GetComponent<Health>().RestoreHealth(amountOfHealthToRestore);
             audioPlayer.PlayHealthPickupClip();
-            Destroy(gameObject);
+            DestroyPickupServerRpc();
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyPickupServerRpc()
+    {
+        GetComponent<NetworkObject>().Despawn();
     }
 }

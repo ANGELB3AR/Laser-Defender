@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ShieldPowerup : MonoBehaviour
+public class ShieldPowerup : NetworkBehaviour
 {
     [SerializeField] float cooldownTime;
     [SerializeField] float moveSpeed;
@@ -36,6 +37,12 @@ public class ShieldPowerup : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         shield.ActivateShield(false);
         audioPlayer.PlayShieldDeactivateClip();
-        Destroy(gameObject);
+        DestroyPickupServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyPickupServerRpc()
+    {
+        GetComponent<NetworkObject>().Despawn();
     }
 }

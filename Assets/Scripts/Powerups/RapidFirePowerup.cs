@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class RapidFirePowerup : MonoBehaviour
+public class RapidFirePowerup : NetworkBehaviour
 {
     [SerializeField] float rapidFireRate;
     [SerializeField] float cooldownTime;
@@ -39,6 +40,12 @@ public class RapidFirePowerup : MonoBehaviour
         shooter.baseFiringRate = shooter.initialBaseFiringRate;
         shooter.minFiringRate = shooter.initialMinFiringRate;
         audioPlayer.PlayRapidfireDeactivationClip();
-        Destroy(gameObject);
+        DestroyPickupServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyPickupServerRpc()
+    {
+        GetComponent<NetworkObject>().Despawn();
     }
 }
