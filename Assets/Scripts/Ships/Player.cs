@@ -32,7 +32,6 @@ public class Player : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) { return; }
-        if (!IsLocalPlayer) { return; }
         if (!Application.isFocused) { return; }
 
         Move();

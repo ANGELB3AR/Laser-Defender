@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Shooter : NetworkBehaviour
 {
     [Header("General")]
     [SerializeField] GameObject projectilePrefab;
@@ -16,6 +17,7 @@ public class Shooter : MonoBehaviour
 
     Coroutine firingCoroutine;
     AudioPlayer audioPlayer;
+    GameObject projectileInstance;
     
     [HideInInspector] public bool isFiring;
     [HideInInspector] public float initialBaseFiringRate;
@@ -34,7 +36,7 @@ public class Shooter : MonoBehaviour
         }
 
         initialBaseFiringRate = baseFiringRate;
-        initialMinFiringRate = initialMinFiringRate;
+        minFiringRate = initialMinFiringRate;
     }
 
     void Update()
@@ -59,17 +61,9 @@ public class Shooter : MonoBehaviour
     {
         while (true)
         {
-            GameObject instance = Instantiate(projectilePrefab, 
-                                                transform.position, 
-                                                Quaternion.identity);
-
-            Rigidbody2D rb2d = instance.GetComponent<Rigidbody2D>();
-            if (rb2d != null)
-            {
-                rb2d.velocity = transform.up * projectileSpeed;
-            }
-
-            Destroy(instance, projectileLifetime);
+            SpawnProjectileServerRpc();
+            
+            Destroy(projectileInstance, projectileLifetime);
 
             float timeToNextProjectile = Random.Range(baseFiringRate - firingRateVariance,
                                                         baseFiringRate + firingRateVariance);
@@ -80,4 +74,23 @@ public class Shooter : MonoBehaviour
             yield return new WaitForSeconds(timeToNextProjectile);
         }
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    void SpawnProjectileServerRpc()
+    {
+        projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        projectileInstance.GetComponent<NetworkObject>().Spawn();
+
+        Rigidbody2D rb2d = projectileInstance.GetComponent<Rigidbody2D>();
+        if (rb2d != null)
+        {
+            rb2d.velocity = transform.up * projectileSpeed;
+        }
+    }
+
+    //[ServerRpc(RequireOwnership = false)]
+    //void DestroyProjectileServerRpc()
+    //{
+    //    projectileInstance.GetComponent<NetworkObject>().Despawn();
+    //}
 }
