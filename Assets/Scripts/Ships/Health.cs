@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
-    [SerializeField] int health = 50;
+    [SerializeField] NetworkVariable<int> health = new NetworkVariable<int>(50);
     [SerializeField] bool isPlayer;
     [SerializeField] int points = 50;
     [SerializeField] ParticleSystem hitEffect;
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] bool canReceiveDamage = true;
 
     int initialHealth;
+    ParticleSystem particleInstance;
 
     CameraShake cameraShake;
     AudioPlayer audioPlayer;
@@ -28,7 +30,17 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        initialHealth = health;
+        initialHealth = health.Value;
+    }
+
+    public void ToggleCanReceiveDamage(bool status)
+    {
+        canReceiveDamage = status;
+    }
+
+    public int GetHealth()
+    {
+        return health.Value;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -58,9 +70,11 @@ public class Health : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        health -= damage;
+        if (!IsServer) { return; }
 
-        if (health <= 0)
+        health.Value -= damage;
+
+        if (health.Value <= 0)
         {
             Die();
         }
@@ -68,28 +82,35 @@ public class Health : MonoBehaviour
 
     public void RestoreHealth(int amount)
     {
-        health += amount;
-        health = Mathf.Clamp(health, int.MinValue, initialHealth);
+        health.Value += amount;
+        health.Value = Mathf.Clamp(health.Value, int.MinValue, initialHealth);
     }
 
     private void Die()
-    {if (!isPlayer)
+    {
+        if (!isPlayer)
         {
             scoreKeeper.ModifyScore(points);
         }
-    else
+        else
         {
             levelManager.LoadGameOver();
         }
-            Destroy(gameObject);
+
+        DestroyOnDeathServerRpc();
     }
 
     void PlayHitEffect()
     {
         if (hitEffect != null)
         {
-            ParticleSystem instance = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
+            particleInstance = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            PlayHitEffectServerRpc();
+
+            float delay = particleInstance.main.duration + particleInstance.main.startLifetime.constantMax;
+            Invoke(nameof(DestroyHitParticleServerRpc), delay);
+
+            DestroyHitParticleServerRpc();
         }
     }
 
@@ -101,13 +122,21 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void ToggleCanReceiveDamage(bool status)
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyOnDeathServerRpc()
     {
-        canReceiveDamage = status;
+        GetComponent<NetworkObject>().Despawn();
     }
 
-    public int GetHealth()
+    [ServerRpc(RequireOwnership = false)]
+    void PlayHitEffectServerRpc()
     {
-        return health;
+        particleInstance.GetComponent<NetworkObject>().Spawn();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyHitParticleServerRpc()
+    {
+        particleInstance.GetComponent<NetworkObject>().Despawn();
     }
 }
