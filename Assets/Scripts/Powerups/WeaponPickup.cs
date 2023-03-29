@@ -58,20 +58,27 @@ public class WeaponPickup : NetworkBehaviour
 
     void FireProximityBomb()
     {
-        Instantiate(projectile, player.transform.position, Quaternion.identity);
+        ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
 
     void FireHomingMissiles()
     {
-        Instantiate(projectile, player.transform.position, Quaternion.identity);
+        ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
 
     void ActivateInstakillLasers()
     {
-        Instantiate(projectile, player.transform.position, Quaternion.identity);
+        ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void ActivateWeaponServerRpc()
+    {
+        GameObject projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
+        projectileInstance.GetComponent<NetworkObject>().Spawn();
     }
 
     [ServerRpc(RequireOwnership = false)]
