@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class InstakillLaser : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class InstakillLaser : MonoBehaviour
     IEnumerator CooldownTimer(float time)
     {
         yield return new WaitForSeconds(time);
-        Destroy(gameObject);
+        DespawnInstakillLasers();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DespawnInstakillLasers()
+    {
+        GetComponent<NetworkObject>().Despawn();
     }
 }
