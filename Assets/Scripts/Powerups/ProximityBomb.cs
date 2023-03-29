@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ProximityBomb : MonoBehaviour
+public class ProximityBomb : NetworkBehaviour
 {
     [SerializeField] float destroySelfDelayTime = 0.5f;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] GameObject damageEffects;
+
+    GameObject damageEffectsInstance;
 
     void Update()
     {
@@ -24,14 +27,22 @@ public class ProximityBomb : MonoBehaviour
 
     void Explode()
     {
-        Instantiate(damageEffects, transform);
+        damageEffectsInstance =Instantiate(damageEffects, transform);
+        SpawnDamageEffectsServerRpc();
+
         GetComponentInChildren<SpriteRenderer>().enabled = false;
-        StartCoroutine(DelayBeforeDestroyingProjectile(destroySelfDelayTime));
+        Invoke(nameof(DespawnDamageEffectsServerRpc), destroySelfDelayTime);
     }
 
-    IEnumerator DelayBeforeDestroyingProjectile(float delay)
+    [ServerRpc(RequireOwnership = false)]
+    void SpawnDamageEffectsServerRpc()
     {
-        yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
+        damageEffectsInstance.GetComponent<NetworkObject>().Spawn();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void DespawnDamageEffectsServerRpc()
+    {
+        damageEffectsInstance.GetComponent<NetworkObject>().Despawn();
     }
 }
