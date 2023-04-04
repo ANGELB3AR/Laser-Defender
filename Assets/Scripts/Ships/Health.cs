@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -20,12 +21,21 @@ public class Health : NetworkBehaviour
     ScoreKeeper scoreKeeper;
     LevelManager levelManager;
 
+    public event Action<int> OnHealthUpdated;
+    
     void Awake()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         levelManager = FindObjectOfType<LevelManager>();
+
+        health.OnValueChanged += HealthOnValueChanged;
+    }
+
+    private void HealthOnValueChanged(int previousValue, int newValue)
+    {
+        OnHealthUpdated?.Invoke(newValue);
     }
 
     void Start()

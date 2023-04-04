@@ -34,29 +34,24 @@ public class UIDisplay : NetworkBehaviour
         if (!player.IsLocalPlayer) { return; }
 
         playerHealth = player.GetComponent<Health>();
-    }
-
-    void Start()
-    {
         healthSlider.maxValue = playerHealth.GetHealth();
         weaponImage.overrideSprite = null;
+
+        playerHealth.OnHealthUpdated += PlayerHealth_OnHealthUpdated;
+    }
+
+    private void PlayerHealth_OnHealthUpdated(int currentHealth)
+    {
+        healthSlider.value = currentHealth;
+        scoreText.text = scoreKeeper.GetScore().ToString("000000000");
     }
 
     void Update()
     {
-        healthSlider.value = playerHealth.GetHealth();
-        scoreText.text = scoreKeeper.GetScore().ToString("000000000");
         ammoText.text = secondaryWeapon.GetCurrentAmmo().ToString();
         weaponImage.overrideSprite = secondaryWeapon.GetWeaponSprite();
-        if (secondaryWeapon.GetCurrentAmmo() == 0)
-        {
-            ammoText.enabled = false;
-            weaponImage.enabled = false;
-        }
-        else
-        {
-            ammoText.enabled = true;
-            weaponImage.enabled = true;
-        }
+
+        ammoText.enabled = secondaryWeapon.GetCurrentAmmo() != 0;
+        weaponImage.enabled = secondaryWeapon.GetCurrentAmmo() != 0;
     }
 }
