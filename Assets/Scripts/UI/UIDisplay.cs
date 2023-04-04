@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Netcode;
+using System;
 
-public class UIDisplay : MonoBehaviour
+public class UIDisplay : NetworkBehaviour
 {
     [Header("Health")]
     [SerializeField] Slider healthSlider;
@@ -21,8 +23,17 @@ public class UIDisplay : MonoBehaviour
 
     void Awake()
     {
+        Player.OnPlayerSpawned += Player_OnPlayerSpawned;
+
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         secondaryWeapon = FindObjectOfType<SecondaryWeapon>();
+    }
+
+    private void Player_OnPlayerSpawned(Player player)
+    {
+        if (!player.IsLocalPlayer) { return; }
+
+        playerHealth = player.GetComponent<Health>();
     }
 
     void Start()

@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 689410432}
   - component: {fileID: 689410431}
   - component: {fileID: 689410435}
+  - component: {fileID: 689410436}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -708,6 +709,22 @@ MonoBehaviour:
   scoreText: {fileID: 1494919704}
   weaponImage: {fileID: 1257027782}
   ammoText: {fileID: 2058084437}
+--- !u!114 &689410436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689410430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1951980949
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &768586847
 GameObject:
   m_ObjectHideFlags: 0

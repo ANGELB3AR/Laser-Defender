@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -18,6 +19,15 @@ public class Player : NetworkBehaviour
     Vector2 minBounds;
     Vector2 maxBounds;
     Shooter shooter;
+
+    public static event Action<Player> OnPlayerSpawned;
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        OnPlayerSpawned?.Invoke(this);
+    }
 
     void Awake()
     {
