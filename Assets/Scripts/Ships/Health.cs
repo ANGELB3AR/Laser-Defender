@@ -22,7 +22,12 @@ public class Health : NetworkBehaviour
     LevelManager levelManager;
 
     public event Action<int> OnHealthUpdated;
-    
+
+    private void OnEnable()
+    {
+        health.OnValueChanged += HealthOnValueChanged;
+    }
+
     void Awake()
     {
         cameraShake = Camera.main.GetComponent<CameraShake>();
@@ -30,17 +35,12 @@ public class Health : NetworkBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         levelManager = FindObjectOfType<LevelManager>();
 
-        health.OnValueChanged += HealthOnValueChanged;
-    }
-
-    private void HealthOnValueChanged(int previousValue, int newValue)
-    {
-        OnHealthUpdated?.Invoke(newValue);
-    }
-
-    void Start()
-    {
         initialHealth = health.Value;
+    }
+
+    private void OnDisable()
+    {
+        health.OnValueChanged -= HealthOnValueChanged;
     }
 
     public void ToggleCanReceiveDamage(bool status)
@@ -148,5 +148,10 @@ public class Health : NetworkBehaviour
     void DestroyHitParticleServerRpc()
     {
         particleInstance.GetComponent<NetworkObject>().Despawn();
+    }
+
+    private void HealthOnValueChanged(int previousValue, int newValue)
+    {
+        OnHealthUpdated?.Invoke(newValue);
     }
 }
