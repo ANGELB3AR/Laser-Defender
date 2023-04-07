@@ -112,16 +112,10 @@ public class Health : NetworkBehaviour
 
     void PlayHitEffect()
     {
-        if (hitEffect != null)
-        {
-            particleInstance = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            PlayHitEffectServerRpc();
+        if (hitEffect == null) { return; }
 
-            float delay = particleInstance.main.duration + particleInstance.main.startLifetime.constantMax;
-            Invoke(nameof(DestroyHitParticleServerRpc), delay);
-
-            DestroyHitParticleServerRpc();
-        }
+        particleInstance = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        PlayHitEffectServerRpc();
     }
 
     void ShakeCamera()
@@ -130,6 +124,11 @@ public class Health : NetworkBehaviour
         {
             cameraShake.Play();
         }
+    }
+
+    private void HealthOnValueChanged(int previousValue, int newValue)
+    {
+        OnHealthUpdated?.Invoke(newValue);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -142,16 +141,5 @@ public class Health : NetworkBehaviour
     void PlayHitEffectServerRpc()
     {
         particleInstance.GetComponent<NetworkObject>().Spawn();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    void DestroyHitParticleServerRpc()
-    {
-        particleInstance.GetComponent<NetworkObject>().Despawn();
-    }
-
-    private void HealthOnValueChanged(int previousValue, int newValue)
-    {
-        OnHealthUpdated?.Invoke(newValue);
     }
 }

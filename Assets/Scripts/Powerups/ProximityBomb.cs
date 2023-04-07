@@ -31,18 +31,11 @@ public class ProximityBomb : NetworkBehaviour
         SpawnDamageEffectsServerRpc();
 
         GetComponentInChildren<SpriteRenderer>().enabled = false;
-        Invoke(nameof(DespawnDamageEffectsServerRpc), destroySelfDelayTime);
     }
 
     [ServerRpc(RequireOwnership = false)]
     void SpawnDamageEffectsServerRpc()
     {
         damageEffectsInstance.GetComponent<NetworkObject>().Spawn();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    void DespawnDamageEffectsServerRpc()
-    {
-        damageEffectsInstance.GetComponent<NetworkObject>().Despawn();
     }
 }

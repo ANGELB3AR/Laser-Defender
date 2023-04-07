@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7688960226983012095}
   - component: {fileID: 6182366120250165378}
   - component: {fileID: -3377755936040250342}
+  - component: {fileID: -6777265701931208087}
   m_Layer: 0
   m_Name: DamageEffects
   m_TagString: Untagged
@@ -101,6 +102,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &-6777265701931208087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205882958714205964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93382fd88c7fe14fb875c95e54cfd08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3300614738318724566
 PrefabInstance:
   m_ObjectHideFlags: 0
