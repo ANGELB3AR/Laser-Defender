@@ -9,6 +9,7 @@ public class InstakillLaser : MonoBehaviour
     [SerializeField] Vector3 offset = new Vector3();
 
     Player player;
+    Vector2 currentPosition = new Vector2();
 
     void Awake()
     {
@@ -22,7 +23,8 @@ public class InstakillLaser : MonoBehaviour
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        currentPosition = player.transform.position + offset;
+        FollowPlayerServerRpc();
     }
 
     IEnumerator CooldownTimer(float time)
@@ -35,5 +37,11 @@ public class InstakillLaser : MonoBehaviour
     void DespawnInstakillLasers()
     {
         GetComponent<NetworkObject>().Despawn();
+    }
+
+    [ServerRpc (RequireOwnership = false)]
+    void FollowPlayerServerRpc()
+    {
+        transform.position = currentPosition;
     }
 }

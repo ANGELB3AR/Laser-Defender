@@ -15,6 +15,7 @@ public class WeaponPickup : NetworkBehaviour
 
     Player player;
     AudioPlayer audioPlayer;
+    GameObject projectileInstance = null;
 
     void Awake()
     {
@@ -58,18 +59,21 @@ public class WeaponPickup : NetworkBehaviour
 
     void FireProximityBomb()
     {
+        projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
         ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
 
     void FireHomingMissiles()
     {
+        projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
         ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
 
     void ActivateInstakillLasers()
     {
+        projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
         ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
@@ -77,7 +81,6 @@ public class WeaponPickup : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     void ActivateWeaponServerRpc()
     {
-        GameObject projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
         projectileInstance.GetComponent<NetworkObject>().Spawn();
     }
 
