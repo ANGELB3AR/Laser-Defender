@@ -11,11 +11,6 @@ public class InstakillLaser : MonoBehaviour
     Player player;
     Vector2 currentPosition = new Vector2();
 
-    void Awake()
-    {
-        player = FindObjectOfType<Player>();
-    }
-
     void Start()
     {
         StartCoroutine(CooldownTimer(cooldownTime));
@@ -25,6 +20,11 @@ public class InstakillLaser : MonoBehaviour
     {
         currentPosition = player.transform.position + offset;
         FollowPlayerServerRpc();
+    }
+
+    public void SetActivatingPlayer(Player activatingPlayer)
+    {
+        player = activatingPlayer;
     }
 
     IEnumerator CooldownTimer(float time)

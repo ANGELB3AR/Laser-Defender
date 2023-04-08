@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class WeaponPickup : NetworkBehaviour
+public class WeaponPickup : MonoBehaviour
 {
     public WeaponType type;
     public int startingAmmo;
@@ -74,6 +74,7 @@ public class WeaponPickup : NetworkBehaviour
     void ActivateInstakillLasers()
     {
         projectileInstance = Instantiate(projectile, player.transform.position, Quaternion.identity);
+        projectileInstance.GetComponent<InstakillLaser>().SetActivatingPlayer(player);
         ActivateWeaponServerRpc();
         audioPlayer.PlayFireSecondaryClip();
     }
